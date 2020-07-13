@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Chambre{% endblock %}
+
+{% block body %}
+     <nav class="navbar navbar-expand-lg navbar-light" id="menu">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link mx-5" href="{{path('chambre_create')}}">Enrégistrer Chambre</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-5" href="{{path('chambre_index')}} ">Liste Chambre</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-5" href="{{path('batiment_create')}} ">Enrégistrer Batiment</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+<div>
+    {% if occupe is not empty %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="text-center">Chambre N° {{chambre.numChambre}} ne peut pas etre supprimer car elle est occupée!!!</h4>
+        </div>
+    {% endif %}
+</div>
+<div class="col">
+<table class="table table-striped text-white text-center">
+        <thead class="font-weight-bold">
+            <tr>
+                <td>Numéro Chambre</td>
+                <td>Numéro Batiment</td>
+                <td>Type Chambre</td>
+                <td>Modifier</td>
+                <td>Supprimer</td>
+            </tr>
+        </thead>
+{% for chambre in chambres %}
+    <tr>
+       <td>{{ chambre.numChambre }}</td>
+       <td>{{ chambre.numBatiment.id }}</td>
+       <td>{{ chambre.typeChambre }}</td>
+       <td><a href="{{ path('chambre_update', {'id': chambre.id}) }}" ><span class="iconify" data-inline="false" data-icon="eva:edit-outline" style="font-size: 24px; color: #1AE716;"></span></a></td>
+       <td><a href="{{ path('chambre_delete', {'id': chambre.id}) }}" onclick="return confirm('supprimer');"><span class="iconify" data-inline="false" data-icon="mdi:delete" style="font-size: 24px; color: red;"></span></a></td>
+
+    </tr>
+        
+{% endfor  %}
+</table>
+</div>
+<div class="navigation">
+    {{ knp_pagination_render(chambres) }}
+</div>
+{% endblock %}

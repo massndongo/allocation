@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% form_theme formEtudiant 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Enregistrement Etudiant{% endblock %}
+
+{% block body %}
+
+     <nav class="navbar navbar-expand-lg navbar-light" id="menu">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                <a class="nav-link mx-5" href="{{path('etudiant_create')}}">Enrégistrer Etudiant</a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link mx-5" href="{{path('etudiant_index')}}">Liste Etudiant</a>
+                </li>
+                <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">Lister Par Type</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="nav-item active nav-link mx-5 " href="{{path('etudiant_boursier')}} ">Boursier</a>
+                            <a class="nav-item active nav-link mx-5" href="{{path('etudiant_non_boursier')}} ">Non Boursier</a>
+                            <a class="nav-item active nav-link mx-5" href="{{path('etudiant_loger')}} ">Loger</a>
+                        </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+{{ form_start(formEtudiant) }}
+<div class="form-group p-1">{{ form_row(formEtudiant.matricule,{'label':" ",'attr':{'class':"input",'placeholder': "Matricule",'disabled':'disabled'}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.prenom,{'label':" ",'attr':{'class':"input",'placeholder': "Prenoms"}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.nom,{'label':" ",'attr':{'class':"input",'placeholder': "Nom"}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.email,{'label':" ",'attr':{'class':"input",'placeholder': "Email"}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.telephone,{'label':" ",'attr':{'class':"input",'placeholder': "Telephone"}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.dateNaissance,{'label':" ",'attr':{'class':"input",'placeholder': "Date de Naissance"}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.typeEtudiant,{'label':" ",'attr':{'class':"input",'placeholder': "Type Etudiant"}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.chambre,{'label':" ",'attr':{'class':"input",'placeholder': "Numero Chambre"}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.montant,{'label':" ",'attr':{'class':"input",'placeholder': "Montant Bourse"}}) }}</div>
+<div class="form-group p-1">{{ form_row(formEtudiant.adresse,{'label':" ",'attr':{'class':"input",'placeholder': "Adresse"}}) }}</div>
+<input type="submit" value="Enregistrer" class="btn btn-primary">
+{{ form_end(formEtudiant) }}
+
+{% endblock %}
+    
+

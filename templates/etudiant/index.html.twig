@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Etudiant{% endblock %}
+
+{% block body %}
+
+     <nav class="navbar navbar-expand-lg navbar-light" id="menu">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+               <a class="nav-link mx-5" href="{{path('etudiant_create')}}">Enrégistrer Etudiant</a>
+            </li>
+            <li class="nav-item active">
+               <a class="nav-link mx-5" href="{{path('etudiant_index')}}">Liste Etudiant</a>
+            </li>
+            <li class="nav-item dropdown">
+
+
+                <button class="btn btn-default nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Lister Par Type
+                    <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li class="nav-item active"><a class="nav-link mx-5" href="{{path('etudiant_boursier')}} ">Boursier</a></li>
+                    <li class="nav-item active"><a class="nav-link mx-5" href="{{path('etudiant_non_boursier')}} ">Non Boursier</a></li>
+                    <li class="nav-item active"><a class="nav-link mx-5" href="{{path('etudiant_loger')}} ">Loger</a></li>
+                    </ul>
+
+
+
+
+            </li>
+    
+        </ul>
+        </div>
+    </nav>
+<div class="col md-4">
+    <table class="table table-striped text-white text-center table-responsive-xl table-responsive-md">
+        <thead class="font-weight-bold thead-dark">
+            <tr>
+                <td>Matricule</td>
+                <td>Prenoms</td>
+                <td>Nom</td>
+                <td>Email</td>
+                <td>Numéro Téléphone</td>
+                <td>Date de Naissance</td>
+                <td>Type Etudiant</td>
+                <td>Adresse</td>
+                <td>Numéro Chambre</td>
+                <td>Montant Bourse</td>
+                <td>Modifier</td>
+
+            </tr>
+        </thead>
+        {% for etudiant in etudiants %}
+           <tr>
+               <td>{{ etudiant.matricule }}</td>
+               <td>{{ etudiant.prenom }}</td>
+               <td>{{ etudiant.nom }}</td>
+               <td>{{ etudiant.email }}</td>
+               <td>{{ etudiant.telephone }}</td>
+               <td>{{ etudiant.dateNaissance|date('d-m-Y') }}</td>
+               <td>{{ etudiant.typeEtudiant }}</td>
+               <td>{{ etudiant.adresse }}</td>
+               <td>{{ etudiant.chambre.numChambre }}</td>
+               <td>{{ etudiant.montant }}</td>
+               <td><a href="{{ path('etudiant_update', {'id': etudiant.id}) }}" ><span class="iconify" data-inline="false" data-icon="eva:edit-outline" style="font-size: 24px; color: #1AE716;"></span></a></td>
+            </tr>
+        {% endfor  %}
+</table>
+</div>
+<div class="navigation">
+    {{ knp_pagination_render(etudiants) }}
+</div>
+
+{% endblock %}
+
+

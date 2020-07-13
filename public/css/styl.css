@@ -1,0 +1,73 @@
+.bgHeader{
+  background-image: url(../img/logement.jpg);
+}
+#sidebar{
+  width: 20%;
+}
+.page-content {
+  width: 80%;
+  height: 100vh;
+  margin-left: 17rem;
+  transition: all 0.4s;
+  background: #599fd9;
+  background: -webkit-linear-gradient(to bottom, #be9038, white);
+  background: linear-gradient(to bottom, #be9038, white);
+}
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 8%;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+#menu{
+  background-color: white;
+}
+.nav-link{
+  margin-left: 20%;
+}
+.nav-item>a:hover{
+  background-color: #E8AD00;
+}
+.page{
+  background-color: #00000070;
+  border-radius: 5px;
+  overflow: auto;
+  border: 3px solid #bb913d;
+}
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+    position: fixed;
+    top:15%;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+}
+.input,.btn{
+  width: 80%;
+}
+.input{
+  height: 20%;
+}
